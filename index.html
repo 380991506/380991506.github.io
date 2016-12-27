@@ -427,7 +427,48 @@
       
         
           
-            <p>基础篇</p>
+            <p>经过各种找资料，踩过各种坑，终于搭建好了hexo，域名是在万维网上买的，我的hexo是3.2.2版本，hexo不同的版本，很多配置都不一样。本片属于基础hexo+github的基础篇，废话不多说了，开始吧。</p>
+<h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><p>我的windows环境，所以教程也是按windows环境写的。<br>安装Git（必须)<br>下载git： <a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a><br>点击exe文件一路next就可以。<br>git的简单教程，这个大家起码要有个基础，后面会顺利很多，我有点懒，就直接复制前辈们的连接。<br>教程点击这里： <a href="https://www.zhihu.com/question/20070065" target="_blank" rel="external">git教程</a><br>记住一定要配置SSH Keys，否则你nodejs提交微博会出现问题。<br>到Node.js官网下载相应平台的最新版本，一路安装即可。</p>
+<h1 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h1><p>Node和Git都安装好后,首先创建一个文件夹,如hexo,用户存放hexo的配置文件,然后进入hexo里安装Hexo。<br>执行如下命令安装Hexo：</p>
+<pre><code>npm install -g hexo
+</code></pre><p>初始化然后，执行init命令初始化hexo,命令：</p>
+<pre><code>hexo init
+</code></pre><p>好啦，至此，全部安装工作已经完成！hexo就是你的博客根目录，所有的操作都在里面进行。<br>生成静态页面</p>
+<pre><code>hexo generate（hexo g也可以）
+</code></pre><p>本地启动<br>启动本地服务，进行文章预览调试，命令：</p>
+<pre><code>hexo server（hexo s也可以）
+</code></pre><p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a><br>然后大家就可以求佛祖保佑，一次就成功了。<br>写文章<br>执行new命令，生成指定名称的文章至hexo\source_posts\postName.md。</p>
+<pre><code>hexo new [layout] &quot;postName&quot; #新建文章&quot;
+</code></pre><p>其中layout是可选参数，默认值为post。有哪些layout呢，请到scaffolds目录下查看，这些文件名称就是layout名称。当然你可以添加自己的layout，方法就是添加一个文件即可，同时你也可以编辑现有的layout，比如post的layout默认是hexo\scaffolds\post.md。</p>
+<pre><code>title: { { title } }
+date: { { date } }
+tags:
+---
+</code></pre><p>postName是md文件的名字，同时也出现在你文章的URL中，postName如果包含空格，必须用”将其包围，postName可以为中文。<br>注意:<em>所有文件 ：后面都必须有个空格，不然会报错。</em><br>看一下刚才生成的文件hexo\source_posts\postName.md，内容如下：</p>
+<pre><code>title: postName #文章页面上的显示名称，可以任意修改，不会出现在URL中
+date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改
+categories: #文章分类目录，可以为空，注意:后面有个空格
+tags: #文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格
+</code></pre><p>接下来，你就可以用喜爱的编辑器尽情书写你的文章。关于markdown语法，可以参考<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown简明语法</a>，后面我会介绍markdown相关的编辑器<br>fancybox<br>可能有人对这个Reading页面中图片的fancybox效果感兴趣，这个是怎么做的呢。<br>很简单，只需要在你的文章*.md文件的头上添加photos项即可，然后一行行添加你要展示的照片：</p>
+<pre><code>layout: photo
+title: 我的风景
+date: 2888-01-16 07:33:44
+tags: [hexo]
+photos:
+- 1.jpg
+- 2.jpg
+</code></pre><p>然后每次可以执行带layout的new命令生成照片文章：<br>    hexo new photo “photoPostName” #新建照片文章<br>经过测试，文件头上的layout: photo可以省略。<br>description<br>markdown文件头中也可以添加description，以覆盖全局配置文件中的description内容。</p>
+<pre><code>title: hexo你的博客
+date: 2013-11-22 17:11:54
+categories: default
+tags: [hexo]
+description: 你对本页的描述
+---
+</code></pre><p><em>hexo默认会处理全部markdown和html文件，如果不想让hexo处理你的文件，可以在文件头中加入layout: false。</em><br>文章摘要<br>在需要显示摘要的地方添加如下代码即可：</p>
+<pre><code>以上是摘要
+&lt;!--more--&gt;
+以下是余下全文
+</code></pre><p>more以上内容即是文章摘要，在主页显示，more以下内容点击『&gt; Read More』链接打开全文才显示。</p>
 
           
         
@@ -679,7 +720,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
